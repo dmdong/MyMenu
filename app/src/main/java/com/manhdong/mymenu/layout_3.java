@@ -27,9 +27,13 @@ public class layout_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_3);
         initData();
+        List<String> autolist = new ArrayList<>(name2);
         auto = (AutoCompleteTextView) findViewById(R.id.autoSuggest);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, name2);
+//        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.item_layout, autolist);
+//        auto.setAdapter(adapter2);
+        MyAdapter2 adapter2 = new MyAdapter2(this, R.layout.item_layout , autolist);
         auto.setAdapter(adapter2);
+
 //        auto.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -47,8 +51,7 @@ public class layout_3 extends AppCompatActivity {
    //
         adapter = new MyAdapter(this,R.layout.item_layout,name2);
         sListView.setAdapter(adapter);
-//        MyAdapter adapter2 = new MyAdapter(this, R.layout.item_layout , name2);
-//            auto.setAdapter(adapter2);
+
 
 
 

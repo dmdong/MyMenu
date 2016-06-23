@@ -12,13 +12,12 @@ import android.widget.Toast;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
  * Created by Saphiro on 6/13/2016.
  */
-public class MyAdapter extends ArrayAdapter<String> {
+public class MyAdapter2 extends ArrayAdapter<String> {
 
     Context context;
     int resource;
@@ -27,16 +26,19 @@ public class MyAdapter extends ArrayAdapter<String> {
 
 
 
-    public MyAdapter(Context context, int resource, List<String> objects) {
+    public MyAdapter2(Context context, int resource, List<String> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
-        this.data = objects;
-        name2 = new ArrayList<>(data);
-
+        data = objects;
+        name2 = new ArrayList<>(objects);
 
     }
 
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//        return super.getView(position, convertView, parent);
+//    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView ==null){
@@ -45,6 +47,7 @@ public class MyAdapter extends ArrayAdapter<String> {
         }
         TextView text = (TextView) convertView;
         text.setText(data.get(position));
+
         return convertView;
     }
 
@@ -74,11 +77,11 @@ public class MyAdapter extends ArrayAdapter<String> {
                     }
                     filter.values = temp;
                     filter.count = temp.size();
+
 //                    notifyDataSetInvalidated();
 
                 }
                 //else notifyDataSetInvalidated();
-
 
                 return filter;
             }
@@ -91,7 +94,7 @@ public class MyAdapter extends ArrayAdapter<String> {
                 if (results !=null && results.count>0){
                     data.clear();
                     data.addAll(temp);
-                    notifyDataSetChanged();
+
                 }
                 else
                 {
@@ -99,12 +102,8 @@ public class MyAdapter extends ArrayAdapter<String> {
                       //  data.clear();
                         Toast.makeText(getContext(), "Không tìm thấy kết quả", Toast.LENGTH_SHORT).show();
                     }
-                  //  not
-//                    notifyDataSetInvalidated();
-                     //  setNotifyOnChange(false);
-                    //notifyDataSetChanged();
                 }
-//                notifyDataSetChanged();
+                notifyDataSetChanged();
 
             }
         };
